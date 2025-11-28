@@ -144,12 +144,7 @@ const OrderHistoryScreen = ({ navigation }) => {
         <View style={{ width: 24 }} />
       </View>
 
-      <ScrollView
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        style={styles.filterContainer}
-        contentContainerStyle={styles.filterContent}
-      >
+      <View style={styles.filterContainer}>
         {filters.map((f) => (
           <TouchableOpacity
             key={f.id}
@@ -169,7 +164,7 @@ const OrderHistoryScreen = ({ navigation }) => {
             </Text>
           </TouchableOpacity>
         ))}
-      </ScrollView>
+      </View>
 
       {filteredTasks.length > 0 ? (
         <FlatList
@@ -220,39 +215,32 @@ const styles = StyleSheet.create({
     color: COLORS.textDark,
   },
   filterContainer: {
+    flexDirection: 'row',
     backgroundColor: COLORS.white,
+    paddingHorizontal: SIZES.paddingLarge,
+    paddingVertical: SIZES.padding,
     borderBottomWidth: 1,
     borderBottomColor: COLORS.border,
   },
-  filterContent: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: SIZES.paddingLarge,
-    paddingVertical: SIZES.padding,
-  },
   filterChip: {
-    paddingHorizontal: SIZES.padding,
-    paddingVertical: SIZES.paddingSmall,
-    borderRadius: SIZES.radiusLarge,
-    backgroundColor: COLORS.backgroundGray,
-    borderWidth: 1,
-    borderColor: COLORS.border,
-    marginRight: SIZES.marginSmall,
-    minHeight: 36,
+    flex: 1,
+    height: 40,
+    backgroundColor: '#f3f4f6',
+    borderRadius: 12,
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: 4,
   },
   filterChipActive: {
     backgroundColor: COLORS.primary,
-    borderColor: COLORS.primary,
   },
   filterText: {
-    fontSize: SIZES.small,
+    fontSize: 14,
     fontWeight: '600',
-    color: COLORS.textDark,
+    color: '#374151',
   },
   filterTextActive: {
-    color: COLORS.white,
+    color: '#ffffff',
   },
   listContent: {
     padding: SIZES.paddingLarge,
