@@ -37,17 +37,22 @@ const LiveTrackingScreen = ({ navigation, route }) => {
     price: 150,
   };
 
-  const statusTimeline = [
-    { status: 'searching', label: 'Searching for courier', completed: true },
-    { status: 'accepted', label: 'Courier accepted', completed: true },
-    { status: 'pickup', label: 'On the way to pickup', completed: true },
-    { status: 'in_transit', label: 'Item picked up', completed: true },
-    { status: 'delivered', label: 'Delivered', completed: false },
+  const statusSteps = [
+    { status: 'searching', label: 'Searching for courier' },
+    { status: 'accepted', label: 'Courier accepted' },
+    { status: 'pickup', label: 'On the way to pickup' },
+    { status: 'in_transit', label: 'Item picked up' },
+    { status: 'completed', label: 'Delivered' },
   ];
 
-  const currentStatusIndex = statusTimeline.findIndex(
+  const currentStatusIndex = statusSteps.findIndex(
     item => item.status === task.status
   );
+
+  const statusTimeline = statusSteps.map((step, index) => ({
+    ...step,
+    completed: index <= currentStatusIndex,
+  }));
 
   const handleCall = () => {
     Linking.openURL(`tel:${task.courier.phone}`);

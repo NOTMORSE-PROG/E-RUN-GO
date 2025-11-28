@@ -8,6 +8,7 @@ import {
   FlatList,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS, SIZES, SHADOWS } from '../../constants/theme';
 import Card from '../../components/Card';
 import StatusBadge from '../../components/StatusBadge';
@@ -16,6 +17,7 @@ import { useApp } from '../../context/AppContext';
 const OrderHistoryScreen = ({ navigation }) => {
   const { tasks } = useApp();
   const [filter, setFilter] = useState('all');
+  const insets = useSafeAreaInsets();
 
   const mockTasks = tasks.length > 0 ? tasks : [
     {
@@ -173,7 +175,10 @@ const OrderHistoryScreen = ({ navigation }) => {
           data={filteredTasks}
           renderItem={renderTaskItem}
           keyExtractor={(item) => item.id}
-          contentContainerStyle={styles.listContent}
+          contentContainerStyle={[
+            styles.listContent,
+            { paddingBottom: insets.bottom > 0 ? insets.bottom + 80 : 100 }
+          ]}
           showsVerticalScrollIndicator={false}
         />
       ) : (
