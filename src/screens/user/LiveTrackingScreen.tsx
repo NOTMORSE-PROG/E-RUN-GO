@@ -8,7 +8,6 @@ import {
   Image,
   Linking,
 } from 'react-native';
-import MapView, { Marker, Polyline } from 'react-native-maps';
 import { Ionicons } from '@expo/vector-icons';
 import { COLORS, SIZES, SHADOWS } from '../../constants/theme';
 import Card from '../../components/Card';
@@ -74,52 +73,23 @@ const LiveTrackingScreen = ({ navigation, route }) => {
       </View>
 
       <View style={styles.mapContainer}>
-        <MapView
-          style={styles.map}
-          initialRegion={{
-            latitude: 14.5995,
-            longitude: 120.9842,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-        >
-          <Marker
-            coordinate={{ latitude: 14.5547, longitude: 121.0244 }}
-            title="Pickup Location"
-          >
-            <View style={styles.markerPickup}>
-              <Ionicons name="ellipse" size={20} color={COLORS.primary} />
+        <View style={styles.mapPlaceholder}>
+          <View style={styles.routeContainer}>
+            <View style={styles.locationPoint}>
+              <Ionicons name="ellipse" size={32} color={COLORS.primary} />
+              <Text style={styles.locationLabel}>Pickup</Text>
             </View>
-          </Marker>
 
-          <Marker
-            coordinate={{ latitude: 14.6760, longitude: 121.0437 }}
-            title="Drop-off Location"
-          >
-            <View style={styles.markerDropoff}>
-              <Ionicons name="location" size={24} color={COLORS.error} />
+            <View style={styles.routeLine}>
+              <Ionicons name="bicycle" size={40} color={COLORS.white} />
             </View>
-          </Marker>
 
-          <Marker
-            coordinate={{ latitude: 14.6199, longitude: 121.0320 }}
-            title="Courier Location"
-          >
-            <View style={styles.markerCourier}>
-              <Ionicons name="bicycle" size={20} color={COLORS.white} />
+            <View style={styles.locationPoint}>
+              <Ionicons name="location" size={40} color={COLORS.error} />
+              <Text style={styles.locationLabel}>Drop-off</Text>
             </View>
-          </Marker>
-
-          <Polyline
-            coordinates={[
-              { latitude: 14.5547, longitude: 121.0244 },
-              { latitude: 14.6199, longitude: 121.0320 },
-              { latitude: 14.6760, longitude: 121.0437 },
-            ]}
-            strokeColor={COLORS.primary}
-            strokeWidth={3}
-          />
-        </MapView>
+          </View>
+        </View>
 
         <View style={styles.etaBadge}>
           <Ionicons name="time-outline" size={16} color={COLORS.white} />
@@ -316,26 +286,32 @@ const styles = StyleSheet.create({
   mapContainer: {
     flex: 1,
   },
-  map: {
+  mapPlaceholder: {
     flex: 1,
+    backgroundColor: COLORS.secondary,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
-  markerPickup: {
-    backgroundColor: COLORS.white,
-    padding: 4,
-    borderRadius: 20,
-    ...SHADOWS.medium,
+  routeContainer: {
+    alignItems: 'center',
+    gap: 20,
   },
-  markerDropoff: {
-    backgroundColor: COLORS.white,
-    padding: 4,
-    borderRadius: 20,
-    ...SHADOWS.medium,
+  locationPoint: {
+    alignItems: 'center',
+    gap: 8,
   },
-  markerCourier: {
+  locationLabel: {
+    fontSize: SIZES.body,
+    fontWeight: '600',
+    color: COLORS.textDark,
+  },
+  routeLine: {
+    height: 80,
+    width: 4,
     backgroundColor: COLORS.primary,
-    padding: 8,
-    borderRadius: 20,
-    ...SHADOWS.large,
+    borderRadius: 2,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   etaBadge: {
     position: 'absolute',
