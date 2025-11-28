@@ -62,7 +62,7 @@ const LiveTrackingScreen = ({ navigation, route }) => {
   };
 
   return (
-    <View style={styles.container}>
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <Ionicons name="arrow-back" size={24} color={COLORS.white} />
@@ -281,28 +281,22 @@ const LiveTrackingScreen = ({ navigation, route }) => {
           </View>
         )}
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: COLORS.white,
   },
   header: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
     paddingHorizontal: SIZES.paddingLarge,
     paddingTop: 60,
     paddingBottom: SIZES.padding,
-    zIndex: 10,
-    backgroundColor: 'rgba(16, 185, 129, 0.9)',
+    backgroundColor: COLORS.primary,
   },
   backButton: {
     padding: 4,
@@ -316,15 +310,16 @@ const styles = StyleSheet.create({
     padding: 4,
   },
   mapContainer: {
-    flex: 1,
+    height: 450,
+    position: 'relative',
   },
   mapPlaceholder: {
-    flex: 1,
+    height: '100%',
     backgroundColor: '#e8f5f0',
     paddingVertical: 40,
   },
   mapContent: {
-    flex: 1,
+    height: '100%',
     justifyContent: 'space-around',
     paddingHorizontal: SIZES.paddingLarge,
   },
@@ -400,7 +395,7 @@ const styles = StyleSheet.create({
   },
   etaBadge: {
     position: 'absolute',
-    top: 140,
+    top: 20,
     alignSelf: 'center',
     flexDirection: 'row',
     alignItems: 'center',
@@ -421,7 +416,7 @@ const styles = StyleSheet.create({
     borderTopLeftRadius: SIZES.radiusLarge * 1.5,
     borderTopRightRadius: SIZES.radiusLarge * 1.5,
     paddingTop: SIZES.paddingSmall,
-    maxHeight: '60%',
+    paddingBottom: 100,
     ...SHADOWS.large,
   },
   sheetHandle: {
@@ -457,7 +452,6 @@ const styles = StyleSheet.create({
     color: COLORS.primary,
   },
   sheetContent: {
-    flex: 1,
     paddingHorizontal: SIZES.paddingLarge,
   },
   courierCard: {
