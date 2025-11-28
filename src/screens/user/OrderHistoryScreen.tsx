@@ -62,7 +62,7 @@ const OrderHistoryScreen = ({ navigation }) => {
   const renderTaskItem = ({ item }) => (
     <Card
       style={styles.taskCard}
-      onPress={() => navigation.navigate('TaskDetails', { taskId: item.id })}
+      onPress={() => navigation.navigate('LiveTracking', { task: item })}
     >
       <View style={styles.taskHeader}>
         <View style={styles.taskIcon}>
@@ -120,10 +120,10 @@ const OrderHistoryScreen = ({ navigation }) => {
 
       <View style={styles.taskFooter}>
         <Text style={styles.price}>₱{item.price}</Text>
-        <TouchableOpacity style={styles.viewButton}>
+        <View style={styles.viewButton}>
           <Text style={styles.viewButtonText}>View Details</Text>
           <Ionicons name="chevron-forward" size={16} color={COLORS.primary} />
-        </TouchableOpacity>
+        </View>
       </View>
     </Card>
   );
