@@ -162,34 +162,38 @@ const LiveTrackingScreen = ({ navigation, route }) => {
         >
           {activeTab === 'tracking' ? (
             <>
-              <Card style={styles.courierCard}>
-                <View style={styles.courierHeader}>
-                  <View style={styles.courierInfo}>
-                    <View style={styles.courierAvatar}>
-                      <Ionicons name="person" size={32} color={COLORS.white} />
-                    </View>
-                    <View style={styles.courierDetails}>
-                      <Text style={styles.courierName}>{task.courier.name}</Text>
-                      <View style={styles.ratingContainer}>
-                        <Ionicons name="star" size={14} color="#f59e0b" />
-                        <Text style={styles.rating}>{task.courier.rating}</Text>
-                        <Text style={styles.vehicle}>
-                          • {task.courier.vehicle} • {task.courier.plate}
-                        </Text>
+              {task.courier && (
+                <Card style={styles.courierCard}>
+                  <View style={styles.courierHeader}>
+                    <View style={styles.courierInfo}>
+                      <View style={styles.courierAvatar}>
+                        <Ionicons name="person" size={32} color={COLORS.white} />
+                      </View>
+                      <View style={styles.courierDetails}>
+                        <Text style={styles.courierName}>{task.courier.name}</Text>
+                        <View style={styles.ratingContainer}>
+                          <Ionicons name="star" size={14} color="#f59e0b" />
+                          <Text style={styles.rating}>{task.courier?.rating || '5.0'}</Text>
+                          {task.courier?.vehicle && (
+                            <Text style={styles.vehicle}>
+                              • {task.courier.vehicle} • {task.courier.plate}
+                            </Text>
+                          )}
+                        </View>
                       </View>
                     </View>
-                  </View>
 
-                  <View style={styles.courierActions}>
-                    <TouchableOpacity style={styles.actionButton} onPress={handleCall}>
-                      <Ionicons name="call" size={20} color={COLORS.primary} />
-                    </TouchableOpacity>
-                    <TouchableOpacity style={styles.actionButton} onPress={handleChat}>
-                      <Ionicons name="chatbubble" size={20} color={COLORS.primary} />
-                    </TouchableOpacity>
+                    <View style={styles.courierActions}>
+                      <TouchableOpacity style={styles.actionButton} onPress={handleCall}>
+                        <Ionicons name="call" size={20} color={COLORS.primary} />
+                      </TouchableOpacity>
+                      <TouchableOpacity style={styles.actionButton} onPress={handleChat}>
+                        <Ionicons name="chatbubble" size={20} color={COLORS.primary} />
+                      </TouchableOpacity>
+                    </View>
                   </View>
-                </View>
-              </Card>
+                </Card>
+              )}
 
               <View style={styles.timelineContainer}>
                 <Text style={styles.timelineTitle}>Order Status</Text>

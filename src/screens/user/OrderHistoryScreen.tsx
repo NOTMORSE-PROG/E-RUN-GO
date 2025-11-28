@@ -48,6 +48,7 @@ const OrderHistoryScreen = ({ navigation }) => {
       status: 'cancelled',
       price: 180,
       createdAt: '2024-01-13 16:45',
+      courier: { name: 'Pedro Reyes' },
     },
   ];
 
