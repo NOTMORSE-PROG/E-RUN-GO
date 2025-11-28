@@ -225,9 +225,10 @@ const styles = StyleSheet.create({
     borderBottomColor: COLORS.border,
   },
   filterContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: SIZES.paddingLarge,
     paddingVertical: SIZES.padding,
-    gap: SIZES.marginSmall,
   },
   filterChip: {
     paddingHorizontal: SIZES.padding,
@@ -236,6 +237,10 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.backgroundGray,
     borderWidth: 1,
     borderColor: COLORS.border,
+    marginRight: SIZES.marginSmall,
+    minHeight: 36,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   filterChipActive: {
     backgroundColor: COLORS.primary,
@@ -244,7 +249,7 @@ const styles = StyleSheet.create({
   filterText: {
     fontSize: SIZES.small,
     fontWeight: '600',
-    color: COLORS.textGray,
+    color: COLORS.textDark,
   },
   filterTextActive: {
     color: COLORS.white,
