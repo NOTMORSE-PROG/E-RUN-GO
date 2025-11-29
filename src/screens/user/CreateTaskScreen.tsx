@@ -65,7 +65,7 @@ const CreateTaskScreen = ({ navigation, route }: { navigation: any; route: any }
     {
       id: 'errand',
       title: 'Run an Errand',
-      description: 'Buy items, pick up something',
+      description: 'Pick up something',
       icon: 'cart-outline',
       color: '#f59e0b',
     },

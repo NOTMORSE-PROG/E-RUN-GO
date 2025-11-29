@@ -50,7 +50,7 @@ const UserDashboardScreen = ({ navigation }) => {
       price: 200,
       distance: '1.2 km',
       eta: '8 min',
-      description: 'Buy medicine and deliver',
+      description: 'Pick up medicine and deliver',
       drone: {
         id: 'DRN-002',
         model: 'Phantom X5',
